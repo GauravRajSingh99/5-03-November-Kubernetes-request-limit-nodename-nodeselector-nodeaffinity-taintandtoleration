@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: nginx
+  namespace: default  
+spec:
+  affinity:
+    nodeAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions: 
+          - key: papa
+            operator: NotIn
+            values: 
+            - dhondhu
+  containers: 
+  - image: nginx
+    name: nginx-container
+    ports: 
+    - containerPort: 80
+    resources:
+      requests:
+        cpu: 500m
+        memory: 200M
+      limits:
+        cpu: 1
+        memory: 1G
+
+      
+      
+      
